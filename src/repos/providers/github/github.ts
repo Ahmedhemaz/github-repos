@@ -25,8 +25,10 @@ export class Github {
         ),
     );
 
-    return data.map((repo) =>
-      this.apiResponseToRepoMapper.mapApiResponseToRepo(repo),
-    );
+    return data
+      .filter((repo: any) => !repo.fork)
+      .map((repo: any) =>
+        this.apiResponseToRepoMapper.mapApiResponseToRepo(repo),
+      );
   }
 }
