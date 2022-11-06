@@ -7,8 +7,6 @@ export class ReposController {
 
   @Get(':username')
   async findAll(@Param('username') username: string) {
-    console.log(await this.reposService.findAll(username));
-
-    return 'yoyoyo';
+    return await this.reposService.findAll(username);
   }
 }
