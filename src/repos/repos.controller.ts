@@ -6,9 +6,9 @@ export class ReposController {
   constructor(private readonly reposService: ReposService) {}
 
   @Get(':username')
-  findAll(@Param('username') username: string) {
-    console.log(username);
+  async findAll(@Param('username') username: string) {
+    console.log(await this.reposService.findAll(username));
 
-    return this.reposService.findAll();
+    return 'yoyoyo';
   }
 }
