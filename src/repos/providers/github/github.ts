@@ -28,6 +28,9 @@ export class Github {
               per_page: getAllReposRequest.per_page,
               page: getAllReposRequest.page,
             },
+            headers: {
+              Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+            },
           },
         )
         .pipe(
@@ -51,7 +54,11 @@ export class Github {
   ): Promise<any[]> {
     const { data } = await firstValueFrom(
       this.httpService
-        .get(`https://api.github.com/repos/${username}/${repoName}/branches`)
+        .get(`https://api.github.com/repos/${username}/${repoName}/branches`, {
+          headers: {
+            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+          },
+        })
         .pipe(
           catchError((error: AxiosError) => {
             this.httpServiceNotfoundPipe.transform(error);
