@@ -11,8 +11,6 @@ export class ReposController {
     @Param('username') username: string,
     @Query() query: FindAllReposDto,
   ) {
-    console.log(query.page);
-    console.log(query.per_page);
     return await this.reposService.findAll({
       username,
       page: query.page,

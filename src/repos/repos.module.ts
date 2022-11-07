@@ -5,6 +5,7 @@ import { HttpModule } from '@nestjs/axios';
 import { Github } from './providers/github/github';
 import { HttpServiceNotfoundPipe } from './pipes/http-service-notfound.pipe';
 import { ApiResponseToRepoMapper } from './providers/github/mappers/api-response-to-repo.mapper';
+import { ApiResponseToBranchMapper } from './providers/github/mappers/api-response-to-branch.mapper';
 
 @Module({
   imports: [HttpModule],
@@ -14,6 +15,7 @@ import { ApiResponseToRepoMapper } from './providers/github/mappers/api-response
     Github,
     HttpServiceNotfoundPipe,
     ApiResponseToRepoMapper,
+    ApiResponseToBranchMapper,
   ],
 })
 export class ReposModule {}

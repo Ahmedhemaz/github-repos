@@ -6,12 +6,14 @@ import { HttpServiceNotfoundPipe } from 'src/repos/pipes/http-service-notfound.p
 import { Repo } from 'src/repos/entities/repo.entity';
 import { ApiResponseToRepoMapper } from './mappers/api-response-to-repo.mapper';
 import { FindAllReposInterface } from 'src/repos/interfaces/find-all-repos.interface';
+import { ApiResponseToBranchMapper } from './mappers/api-response-to-branch.mapper';
 @Injectable()
 export class Github {
   constructor(
     private readonly httpService: HttpService,
     private readonly httpServiceNotfoundPipe: HttpServiceNotfoundPipe,
     private readonly apiResponseToRepoMapper: ApiResponseToRepoMapper,
+    private readonly apiResponseToBranchMapper: ApiResponseToBranchMapper,
   ) {}
 
   public async getAllReposBy(
@@ -41,5 +43,24 @@ export class Github {
       .map((repo: any) =>
         this.apiResponseToRepoMapper.mapApiResponseToRepo(repo),
       );
+  }
+
+  public async getRepoBranches(
+    username: string,
+    repoName: string,
+  ): Promise<any[]> {
+    const { data } = await firstValueFrom(
+      this.httpService
+        .get(`https://api.github.com/repos/${username}/${repoName}/branches`)
+        .pipe(
+          catchError((error: AxiosError) => {
+            this.httpServiceNotfoundPipe.transform(error);
+            throw error.message;
+          }),
+        ),
+    );
+    return data.map((branch: any) =>
+      this.apiResponseToBranchMapper.mapApiResponseToBranch(branch),
+    );
   }
 }
