@@ -6,6 +6,7 @@ import { Github } from './providers/github/github';
 import { HttpServiceNotfoundPipe } from './pipes/http-service-notfound.pipe';
 import { ApiResponseToRepoMapper } from './providers/github/mappers/api-response-to-repo.mapper';
 import { ApiResponseToBranchMapper } from './providers/github/mappers/api-response-to-branch.mapper';
+import { RepoCreator } from './entities/creator/repo.creator';
 
 @Module({
   imports: [HttpModule],
@@ -16,6 +17,7 @@ import { ApiResponseToBranchMapper } from './providers/github/mappers/api-respon
     HttpServiceNotfoundPipe,
     ApiResponseToRepoMapper,
     ApiResponseToBranchMapper,
+    RepoCreator,
   ],
 })
 export class ReposModule {}
