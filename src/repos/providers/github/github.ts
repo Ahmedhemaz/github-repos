@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { catchError, firstValueFrom } from 'rxjs';
 import { AxiosError } from 'axios';
-import { HttpServiceNotfoundPipe } from 'src/repos/pipes/http-service-notfound.pipe';
-import { Repo } from 'src/repos/entities/repo.entity';
+import { HttpServiceNotfoundPipe } from '../../pipes/http-service-notfound.pipe';
+import { Repo } from '../../entities/repo.entity';
 import { ApiResponseToRepoMapper } from './mappers/api-response-to-repo.mapper';
-import { FindAllReposInterface } from 'src/repos/interfaces/find-all-repos.interface';
+import { FindAllReposInterface } from '../../interfaces/find-all-repos.interface';
 import { ApiResponseToBranchMapper } from './mappers/api-response-to-branch.mapper';
 @Injectable()
 export class Github {

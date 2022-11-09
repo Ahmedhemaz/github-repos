@@ -1,4 +1,4 @@
-import { Branch } from 'src/repos/entities/branch.entity';
+import { Branch } from '../../../entities/branch.entity';
 
 export class ApiResponseToBranchMapper {
   /**

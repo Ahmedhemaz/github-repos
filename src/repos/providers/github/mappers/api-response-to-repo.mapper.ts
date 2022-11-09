@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Repo } from 'src/repos/entities/repo.entity';
+import { Repo } from '../../../entities/repo.entity';
 
 @Injectable()
 export class ApiResponseToRepoMapper {
