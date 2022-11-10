@@ -9,15 +9,18 @@
 
 # How To Run The Api
 
-1- rename **.env.sample** to **.env** using
-
-    cp .env.sample .env
-
 ### _Note that for this task only i provided an accessToken to avoid github rate limit which will expire i will revoke it after the task_
 
-2- run docker-compose command to start the api using:
+- follow link instructions to create your own personal access token then put your own access token value in .env.sample
+  [generate-personal-access-token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic)
 
-    docker-compose up
+  1- rename **.env.sample** to **.env** using
+
+      cp .env.sample .env
+
+  2- run docker-compose command to start the api using:
+
+        docker-compose up
 
 - which will run the application in development mode with a watcher for file changes
 
