@@ -15,10 +15,10 @@ export class ReposService {
     const repos: Repo[] = await this.githubService.getAllReposBy(
       findAllRequest,
     );
-    const cp: Promise<Repo>[] = repos.map(async (repo) => {
-      const branches = await this.findAllRepoBranches(repo, findAllRequest);
-      return this.repoCreator.createRepo(repo, branches);
-    });
+    const cp: Promise<Repo>[] = this.mergeRepoWithBranches(
+      repos,
+      findAllRequest,
+    );
     return Promise.all(cp);
   }
 
@@ -33,5 +33,14 @@ export class ReposService {
       findAllRequest.username,
       repo.repositoryName,
     );
+  }
+  private mergeRepoWithBranches(
+    repos: Repo[],
+    findAllRequest: FindAllReposInterface,
+  ): Promise<Repo>[] {
+    return repos.map(async (repo) => {
+      const branches = await this.findAllRepoBranches(repo, findAllRequest);
+      return this.repoCreator.createRepo(repo, branches);
+    });
   }
 }
