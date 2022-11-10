@@ -5,6 +5,7 @@
 - [How To Run The Api](#How-To-Run-The-Api)
 - [Swagger](#Swagger)
 - [Integration Tests](#Integration-Tests)
+- [Unit Tests](#unit-Tests)
 
 # How To Run The Api
 
@@ -41,3 +42,14 @@
 ### **Note that for first test it may fail as i'm expecting my personal current repos**
 
 ---
+
+# Unit Tests
+
+1- the main functionality was covered in unit tests
+2- to run tests:
+
+    docker exec github-repos-api npm run test
+
+3- to check the coverage report run:
+
+    docker exec github-repos-api npm run test:cov
